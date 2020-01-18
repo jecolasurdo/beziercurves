@@ -9,7 +9,16 @@ points = [
 n = 10
 
 def main(points, n):
-    print(points, n)
+    for a in return_alpha_values(n):
+        print(a)
+
+
+def return_alpha_values(n):
+    delta = 1 / n
+    alpha = 0 
+    for _ in range(n):
+        alpha = alpha + delta
+        yield alpha
 
 if __name__ == "__main__":
     main(points, n)
