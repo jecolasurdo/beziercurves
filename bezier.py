@@ -1,3 +1,5 @@
+import plotly.express as px
+
 points = [
     [0, 180],
     [90, 0],
@@ -8,16 +10,16 @@ points = [
 n = 10
 
 def main(points, n):
-    # for a in return_alpha_values(n):
-    #     print(a)
-    alpha = .33
-    new_points = find_new_segments(points, alpha)
-    while len(new_points) > 1:
-        new_points = find_new_segments(new_points, alpha)
-    print(new_points)
+    bezier = []
+    for alpha in return_alpha_values(n):
+        new_points = find_new_segments(points, alpha)
+        while len(new_points) > 1:
+            new_points = find_new_segments(new_points, alpha)
+        bezier.append(new_points[0])
+    fig = px.scatter(x=[0, 1, 2, 3, 4], y=[0, 1, 4, 9, 16])
+    fig.show()
 
 def find_new_segments(points, alpha):
-    alpha = 0.33
     i = 0 
     new_points = []
     while i < len(points) - 1:
